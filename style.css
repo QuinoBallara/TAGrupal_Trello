@@ -1,0 +1,30 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+#topBar h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    margin-bottom: 5%;
+    margin-top: 0;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task {
+    background-color: white;
+    margin-bottom: 5%;
+    margin-top: 0;
+}
