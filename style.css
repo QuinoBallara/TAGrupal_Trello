@@ -11,15 +11,20 @@ html {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
 .card {
-    background-color: aqua;
     margin-bottom: 5%;
     margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task {
+    background-color: white;
+    margin-bottom: 5%;
+    margin-top: 0;
 }
