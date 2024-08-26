@@ -2,6 +2,77 @@ body,
 html {
     width: 100%;
     height: 100%;
+    background-color: #f1faee;
+}
+
+.scroller {
+    --sb-track-color: #a8dadc;
+    --sb-thumb-color: #3b7080;
+    --sb-size: 7px;
+}
+
+.scroller::-webkit-scrollbar {
+    width: var(--sb-size)
+}
+
+.scroller::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+
+}
+
+.scroller::-webkit-scrollbar-button:start:increment {
+    height: 2%;
+    display: block;
+    background: transparent;
+}
+
+.scroller::-webkit-scrollbar-button:end:increment {
+    height: 2%;
+    display: block;
+    background: transparent;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    .scroller {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+h1,
+h2,
+p {
+    color: #5f0f40;
+    font-family: 'Moderustic';
+}
+
+#boton {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    background-color: #3b7080;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+#addTask {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.header-title {
+    padding-top: 1.2rem;
+}
+
+#topBar {
+    width: 100%;
+    margin-bottom: 3%;
 }
 
 #topBar h1 {
@@ -15,16 +86,26 @@ html {
 }
 
 .card {
-    margin-bottom: 5%;
-    margin-top: 0;
-    width: 40%;
+    margin: auto auto 10% auto !important;
+    width: 75%;
+    max-height: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #a8dadc;
+    border: 0.01rem solid black;
+    overflow-y: auto;
+}
+
+.card h2 {
+    margin: 5%;
 }
 
 .task {
-    background-color: white;
-    margin-bottom: 5%;
-    margin-top: 0;
+    background-color: #83c5be;
+    margin-bottom: 8%;
+    width: 85%;
+    border-radius: 5%;
+    border: 0.01rem solid black;
+    padding: 2.5%;
 }
