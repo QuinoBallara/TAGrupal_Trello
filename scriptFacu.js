@@ -159,7 +159,6 @@ function addTaskToBoard() {
                 <p class="hide">${priority}</p>`
 
 
-
         const column = document.getElementById(status)
         if (column) {
             column.appendChild(newTask)
@@ -171,8 +170,28 @@ function addTaskToBoard() {
         document.getElementById('title').value = 'backlog'
 
 
-
     } else {
         alert('Por favor, complete todos los campos.')
+    }
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    const taskElement = document.getElementById(data);
+
+    // Asegúrate de que el evento de drop sea en un contenedor válido
+    if (ev.target.classList.contains('card')) {
+        ev.target.appendChild(taskElement);
+    } else if (ev.target.closest('.card')) {
+        ev.target.closest('.card').appendChild(taskElement);
     }
 }

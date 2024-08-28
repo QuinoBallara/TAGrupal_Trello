@@ -28,8 +28,10 @@ html {
 
 .scroller::-webkit-scrollbar-button:start:increment {
     height: 2%;
-    display: block;
+    display: flex;
     background: transparent;
+    align-items: center;
+    justify-content: center;
 }
 
 .scroller::-webkit-scrollbar-button:end:increment {
@@ -81,13 +83,18 @@ p {
 
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2%;
 }
 
 .card {
-    margin: auto auto 10% auto !important;
-    width: 75%;
+    /*margin: auto auto 10% auto !important;*/
+    width: 20%;
+    min-width: 200px;
+    min-height: 60vh;
     max-height: 25rem;
     display: flex;
     flex-direction: column;
