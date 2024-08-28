@@ -57,16 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const stateOption1 = document.createElement("option")
     stateOption1.textContent = "Backlog"
-    stateOption1.value = "Backlog"
+    stateOption1.value = "backlog"
     const stateOption2 = document.createElement("option")
-    stateOption2.textContent = "To Do"
+    stateOption2.textContent = "To do"
     stateOption2.value = "To Do"
     const stateOption3 = document.createElement("option")
-    stateOption3.textContent = "In Progress"
-    stateOption3.value = "In Progress"
+    stateOption3.textContent = "In progress"
+    stateOption3.value = "in-progress"
     const stateOption4 = document.createElement("option")
     stateOption4.textContent = "Done"
-    stateOption4.value = "Done"
+    stateOption4.value = "done"
     const stateOption5 = document.createElement("option")
     stateOption5.textContent = "Blocked"
     stateOption5.value = "Blocked"
@@ -170,6 +170,8 @@ function addTaskToBoard() {
                 <p class="hide">${tasker}</p>
                 <p class="hide">${finalDate}</p>
                 <p class="hide">${priority}</p>`;
+
+        console.log("Mi estado es:", status)
 
         const column = document.getElementById(status);
 
