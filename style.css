@@ -31,10 +31,8 @@ html {
 
 .scroller::-webkit-scrollbar-button:start:increment {
     height: 2%;
-    display: flex;
+    display: block;
     background: transparent;
-    align-items: center;
-    justify-content: center;
 }
 
 .scroller::-webkit-scrollbar-button:end:increment {
@@ -51,7 +49,8 @@ html {
 
 h1,
 h2,
-p {
+p,
+h3 {
     color: #5f0f40;
     font-family: 'Moderustic';
 }
@@ -99,17 +98,35 @@ p {
     width: 20%;
     min-width: 200px;
     min-height: 60vh;
-    max-height: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #a8dadc;
     border: 0.01rem solid black;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-.card h2 {
-    margin: 5%;
+.card-title {
+    width: 100%;
+    position: absolute;
+    background-color: #a8dadc;
+    padding: 3%;
+    border-bottom: 0.01rem solid black;
+
+}
+
+.card-title h2 {
+    text-align: center;
+}
+
+.card-content {
+    margin-top: 24%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
 }
 
 .task {
