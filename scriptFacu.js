@@ -60,16 +60,16 @@ document.addEventListener("DOMContentLoaded", function () {
     stateOption1.value = "backlog"
     const stateOption2 = document.createElement("option")
     stateOption2.textContent = "To do"
-    stateOption2.value = "To Do"
+    stateOption2.value = "to-do"
     const stateOption3 = document.createElement("option")
-    stateOption3.textContent = "In progress"
+    stateOption3.textContent = "In Progress"
     stateOption3.value = "in-progress"
     const stateOption4 = document.createElement("option")
     stateOption4.textContent = "Done"
     stateOption4.value = "done"
     const stateOption5 = document.createElement("option")
     stateOption5.textContent = "Blocked"
-    stateOption5.value = "Blocked"
+    stateOption5.value = "blocked"
 
     stateInput.appendChild(stateOption1)
     stateInput.appendChild(stateOption2)

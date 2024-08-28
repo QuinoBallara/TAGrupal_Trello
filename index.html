@@ -11,8 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link href="style.css" rel="stylesheet">
-    <link href="facu.css" rel="stylesheet">
+    <link href="modal.css" rel="stylesheet">
     <script defer type="module" src="scriptFacu.js"></script>
+    <script defer type="module" src="scriptPau.js"></script>
 
     <title>Falso Trello</title>
 </head>
@@ -23,12 +24,13 @@
     </div>
     <!--    <div id="boton">-->
     <button id="addTask" class="button is-small is-primary">+</button>
+    <button id="editTask" class="button is-small is-primary">Editar</button>
     <!--    </div>-->
     <div class="container">
         <div id="backlog" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>BACKLOG</h2>
         </div>
-        <div id="in-progress" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div id="to-do" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>TO DO</h2>
             <div class="task">
                 <p>Título</p>
@@ -51,14 +53,14 @@
                 <p>Descripción</p>
             </div>
         </div>
-        <div id="done" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div id="in-progress" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>IN PROGRESS</h2>
         </div>
-        <div class="card scroller">
-            <h2>BLOCKED</h2>
-        </div>
-        <div class="card scroller">
+        <div id="done" class="card scroller">
             <h2>DONE</h2>
+        </div>
+        <div id="blocked" class="card scroller">
+            <h2>BLOCKED</h2>
         </div>
     </div>
     </div>

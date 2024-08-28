@@ -51,6 +51,7 @@ html {
 
 h1,
 h2,
+h3,
 p {
     color: #5f0f40;
     font-family: 'Moderustic';
@@ -95,10 +96,10 @@ p {
 }
 
 .card {
-    margin: auto auto 10% auto !important;
+    /*margin: auto auto 10% auto !important;*/
     width: 20%;
     min-width: 200px;
-    min-height: 25rem;
+    min-height: 60vh;
     max-height: 25rem;
     display: flex;
     flex-direction: column;
