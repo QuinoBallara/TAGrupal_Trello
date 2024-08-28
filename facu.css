@@ -1,0 +1,90 @@
+#modalContentFacu>* {
+    font-family: 'Times New Roman', Times, serif !important;
+}
+
+.hide {
+    display: none;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 50%;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.modal-content h2 {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+
+}
+
+.modal-content label {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+.modal-content textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 200px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 50px;
+}
+
+#accept {
+    background-color: green;
+    color: #000;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+#accept:hover {
+    background-color: #b7d6b8;
+}
+
+#cancel {
+    background-color: red;
+    color: #000;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+#cancel:hover {
+    background-color: rgb(186, 151, 151);
+}

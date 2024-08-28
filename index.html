@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" type="module" defer></script>
     <link href="style.css" rel="stylesheet">
+    <link href="facu.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+    <script defer type="module" src="scriptFacu.js"></script>
     <title>Falso Trello</title>
 </head>
 
@@ -17,7 +20,7 @@
         </div>
         <button id="addTask">+</button>
         <div class="container">
-            <div class="card has-background-grey-darker">
+            <div class="card has-background-grey-darker" id="Backlog">
                 <h2>BACKLOG</h2>
                 <div class="task">
                     <p>Título</p>
@@ -36,7 +39,7 @@
                     <p>Descripción</p>
                 </div>
             </div>
-            <div class="card has-background-grey-darker">
+            <div class="card has-background-grey-darker" id="To Do">
                 <h2>TO DO</h2>
                 <div class="task">
                     <p>Título</p>
@@ -55,7 +58,7 @@
                     <p>Descripción</p>
                 </div>
             </div>
-            <div class="card has-background-grey-darker">
+            <div class="card has-background-grey-darker" id="In Progress">
                 <h2>IN PROGRESS</h2>
                 <div class="task">
                     <p>Título</p>
@@ -74,7 +77,7 @@
                     <p>Descripción</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id="Blocked">
                 <h2>BLOCKED</h2>
                 <div class="task">
                     <p>Título</p>
@@ -93,7 +96,7 @@
                     <p>Descripción</p>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" id="Done">
                 <h2>DONE</h2>
                 <div class="task">
                     <p>Título</p>
