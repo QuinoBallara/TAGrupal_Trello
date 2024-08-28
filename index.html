@@ -21,34 +21,14 @@
     <div id="topBar">
         <h1 class="header-title">GESTOR DE TAREAS</h1>
     </div>
-    <div id="boton">
-        <button id="addTask">+</button>
-    </div>
+    <!--    <div id="boton">-->
+    <button id="addTask" class="button is-small is-primary">+</button>
+    <!--    </div>-->
     <div class="container">
-        <div class="card scroller">
+        <div id="backlog" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>BACKLOG</h2>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
         </div>
-        <div class="card scroller">
+        <div id="in-progress" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>TO DO</h2>
             <div class="task">
                 <p>Título</p>
@@ -66,65 +46,21 @@
                 <p>Título</p>
                 <p>Descripción</p>
             </div>
+            <div class="task">
+                <p>Título</p>
+                <p>Descripción</p>
+            </div>
         </div>
-        <div class="card scroller">
+        <div id="done" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>IN PROGRESS</h2>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
         </div>
         <div class="card scroller">
             <h2>BLOCKED</h2>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
         </div>
         <div class="card scroller">
             <h2>DONE</h2>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-            </div>
-            <div class="task">
-                <p>Título</p>
-                <p>Descripción</p>
-
-            </div>
         </div>
+    </div>
     </div>
 
 </body>

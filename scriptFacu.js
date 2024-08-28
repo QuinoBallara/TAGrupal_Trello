@@ -137,41 +137,57 @@ document.addEventListener("DOMContentLoaded", function () {
     cancelButton.addEventListener("click", function () {
         taskModal.classList.remove("is-active")
     })
+
+    const columns = document.querySelectorAll('.card');
+    columns.forEach(column => {
+        column.addEventListener('dragover', allowDrop);
+        column.addEventListener('drop', drop);
+    });
+
 })
 
 function addTaskToBoard() {
-    const title = document.getElementById('title').value
-    const desc = document.getElementById('description').value
-    const status = document.getElementById('state').value
-    const tasker = document.getElementById('assign').value
-    const finalDate = document.getElementById('date').value
-    const priority = document.getElementById('priority').value
+    const title = document.getElementById('title').value;
+    const desc = document.getElementById('description').value;
+    const status = document.getElementById('state').value;
+    const tasker = document.getElementById('assign').value;
+    const finalDate = document.getElementById('date').value;
+    const priority = document.getElementById('priority').value;
 
     if (title && desc && status) {
-        const newTask = document.createElement('div')
-        newTask.classList.add('task')
+
+        console.log("Hay titulo")
+
+        const newTask = document.createElement('div');
+        newTask.classList.add('task');
+        newTask.draggable = true;
+        newTask.addEventListener('dragstart', drag);
+
         newTask.innerHTML =
-            `<h3 >${title}</h3>
+            `<h3>${title}</h3>
                 <p>${desc}</p>
                 <p class="hide">${status}</p>
                 <p class="hide">${tasker}</p>
                 <p class="hide">${finalDate}</p>
-                <p class="hide">${priority}</p>`
+                <p class="hide">${priority}</p>`;
 
+        const column = document.getElementById(status);
 
-        const column = document.getElementById(status)
         if (column) {
-            column.appendChild(newTask)
+            console.log("Hay columna")
+            column.appendChild(newTask);
         }
 
 
-        document.getElementById('title').value = ''
-        document.getElementById('description').value = ''
-        document.getElementById('title').value = 'backlog'
-
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('assign').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('priority').value = '1';
+        document.getElementById('state').value = 'backlog';
 
     } else {
-        alert('Por favor, complete todos los campos.')
+        alert('Por favor, complete todos los campos.');
     }
 }
 
@@ -188,7 +204,6 @@ function drop(ev) {
     const data = ev.dataTransfer.getData("text");
     const taskElement = document.getElementById(data);
 
-    // Asegúrate de que el evento de drop sea en un contenedor válido
     if (ev.target.classList.contains('card')) {
         ev.target.appendChild(taskElement);
     } else if (ev.target.closest('.card')) {

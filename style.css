@@ -9,6 +9,9 @@ html {
     --sb-track-color: #a8dadc;
     --sb-thumb-color: #3b7080;
     --sb-size: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .scroller::-webkit-scrollbar {
@@ -54,9 +57,6 @@ p {
 }
 
 #boton {
-    display: flex;
-    align-items: center;
-    align-content: center;
     background-color: #3b7080;
     width: 4rem;
     height: 4rem;
@@ -64,8 +64,12 @@ p {
 }
 
 #addTask {
-    font-size: 3rem;
+    font-size: 2vb;
     text-align: center;
+    position: fixed;
+    border-radius: 10vb;
+    margin: 5vh 2vb 0 0;
+    z-index: 1;
 }
 
 .header-title {
