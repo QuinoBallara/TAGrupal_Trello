@@ -105,15 +105,14 @@ h3 {
     border: 0.01rem solid black;
     overflow-y: hidden;
     overflow-x: hidden;
+    gap: 2vh;
 }
 
 .card-title {
     width: 100%;
-    position: absolute;
     background-color: #a8dadc;
     padding: 3%;
     border-bottom: 0.01rem solid black;
-
 }
 
 .card-title h2 {
@@ -121,12 +120,26 @@ h3 {
 }
 
 .card-content {
-    margin-top: 24%;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0;
+    flex-grow: 1;
+    background-color: red;
+
+}
+
+.card-content-test {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    flex-grow: 1;
+    background-color: green;
 }
 
 .task {
