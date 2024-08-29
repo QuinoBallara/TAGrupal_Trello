@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e041117-0066-490a-bce0-478ce6028b17" name="Changes" comment="probando drag">
+    <list default="true" id="9e041117-0066-490a-bce0-478ce6028b17" name="Changes" comment="probando drag2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scriptGaston.js" beforeDir="false" afterPath="$PROJECT_DIR$/scriptGaston.js" afterDir="false" />
@@ -76,6 +76,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="probando drag" />
-    <option name="LAST_COMMIT_MESSAGE" value="probando drag" />
+    <MESSAGE value="probando drag2" />
+    <option name="LAST_COMMIT_MESSAGE" value="probando drag2" />
   </component>
 </project>

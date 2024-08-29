@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log('El DOM está listo');
-    const columns = document.querySelectorAll('.card-content');
+    const columns = document.querySelectorAll('.card');
     columns.forEach(column => {
         column.addEventListener('dragover', allowDrop);
         column.addEventListener('drop', drop);
-        column.className = 'card-content-test';
     });
 
 
@@ -30,9 +29,9 @@ function drop(ev) {
     const taskElement = document.getElementById(data);
     console.log('taskElement', taskElement);
 
-    if (ev.target.classList.contains('card-content')) {
+    if (ev.target.classList.contains('card')) {
         ev.target.appendChild(taskElement);
-    } else if (ev.target.closest('.card-content')) {
-        ev.target.closest('.card-content').appendChild(taskElement);
+    } else if (ev.target.closest('.card')) {
+        ev.target.closest('.card').appendChild(taskElement);
     }
 }
