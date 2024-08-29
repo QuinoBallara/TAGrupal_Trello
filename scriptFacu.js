@@ -138,11 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
         taskModal.classList.remove("is-active")
     })
 
-    const columns = document.querySelectorAll('.card');
-    columns.forEach(column => {
-        column.addEventListener('dragover', allowDrop);
-        column.addEventListener('drop', drop);
-    });
+    const tasks = document.querySelectorAll('.task');
+    tasks.forEach(task => {
+        task.draggable = true;
+        task.addEventListener('dragstart', drag);
+    })
 
 })
 
@@ -156,7 +156,7 @@ function addTaskToBoard() {
 
     if (title && desc && status) {
 
-        console.log("Hay titulo")
+        console.log("Hay titulo facu")
 
         const newTask = document.createElement('div');
         newTask.classList.add('task');
@@ -193,22 +193,3 @@ function addTaskToBoard() {
     }
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    const taskElement = document.getElementById(data);
-
-    if (ev.target.classList.contains('card')) {
-        ev.target.appendChild(taskElement);
-    } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').appendChild(taskElement);
-    }
-}
