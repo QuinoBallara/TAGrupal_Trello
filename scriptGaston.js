@@ -38,19 +38,6 @@ function drop(ev) {
         return;
     }
 
-    // if (ev.target.classList.contains('card')) {
-    //     try {
-    //         ev.target.appendChild(taskElement);
-    //     } catch (error) {
-    //         console.error("Error al intentar soltar", error);
-    //     }
-    // } else if (ev.target.closest('.card')) {
-    //     try {
-    //         ev.target.closest('.card').appendChild(taskElement);
-    //     } catch (error) {
-    //         console.error("Error al intentar soltar2", error);
-    //     }
-    // }
 
     const dropTarget = ev.target.closest('.card');
     if (dropTarget) {
@@ -61,3 +48,5 @@ function drop(ev) {
         }
     }
 }
+
+

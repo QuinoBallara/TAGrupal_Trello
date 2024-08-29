@@ -162,6 +162,7 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
+        newTask.id = `task-${document.querySelectorAll('.task').length}`;
 
         newTask.innerHTML =
             `<h3>${title}</h3>
@@ -174,6 +175,8 @@ function addTaskToBoard() {
         console.log("Mi estado es:", status)
 
         const column = document.getElementById(status);
+
+        console.log("Mi columna es:", column.id)
 
         if (column) {
             console.log("Hay columna")
