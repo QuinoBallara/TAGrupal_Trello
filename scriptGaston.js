@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     const tasks = document.querySelectorAll('.task');
-    tasks.forEach(task => {
+    tasks.forEach((task, index) => {
+        task.id = `task-${index}`;
         task.addEventListener('dragstart', drag);
     });
 });
@@ -19,7 +20,12 @@ function allowDrop(ev) {
 
 function drag(ev) {
     console.log("Drag start", ev.target.id);
-    ev.dataTransfer.setData("text", ev.target.id);
+    try {
+        ev.dataTransfer.setData("text", ev.target.id);
+        console.log('EXITOSO')
+    } catch (error) {
+        console.error("Error al intentar arrastrar", error);
+    }
 }
 
 function drop(ev) {
@@ -27,11 +33,31 @@ function drop(ev) {
     const data = ev.dataTransfer.getData("text");
     console.log("Drop", data);
     const taskElement = document.getElementById(data);
-    console.log('taskElement', taskElement);
+    if (!taskElement) {
+        console.error(`No se encontró un elemento con el ID: ${data}`);
+        return;
+    }
 
-    if (ev.target.classList.contains('card')) {
-        ev.target.appendChild(taskElement);
-    } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').appendChild(taskElement);
+    // if (ev.target.classList.contains('card')) {
+    //     try {
+    //         ev.target.appendChild(taskElement);
+    //     } catch (error) {
+    //         console.error("Error al intentar soltar", error);
+    //     }
+    // } else if (ev.target.closest('.card')) {
+    //     try {
+    //         ev.target.closest('.card').appendChild(taskElement);
+    //     } catch (error) {
+    //         console.error("Error al intentar soltar2", error);
+    //     }
+    // }
+
+    const dropTarget = ev.target.closest('.card');
+    if (dropTarget) {
+        try {
+            dropTarget.appendChild(taskElement);
+        } catch (error) {
+            console.error("Error al intentar soltar", error);
+        }
     }
 }
