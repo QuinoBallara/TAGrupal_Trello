@@ -60,16 +60,16 @@ document.addEventListener("DOMContentLoaded", function () {
     stateOption1.value = "backlog"
     const stateOption2 = document.createElement("option")
     stateOption2.textContent = "To do"
-    stateOption2.value = "To Do"
+    stateOption2.value = "to-do"
     const stateOption3 = document.createElement("option")
-    stateOption3.textContent = "In progress"
+    stateOption3.textContent = "In Progress"
     stateOption3.value = "in-progress"
     const stateOption4 = document.createElement("option")
     stateOption4.textContent = "Done"
     stateOption4.value = "done"
     const stateOption5 = document.createElement("option")
     stateOption5.textContent = "Blocked"
-    stateOption5.value = "Blocked"
+    stateOption5.value = "blocked"
 
     stateInput.appendChild(stateOption1)
     stateInput.appendChild(stateOption2)
@@ -142,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('dateEdit').value = ''
         document.getElementById('priorityEdit').value = '1'
         document.getElementById('stateEdit').value = 'backlog'
+        window.taskToEdit = null
     })
 
     const columns = document.querySelectorAll('.card');
@@ -152,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
+window.taskToEdit = null
 function addEditedTaskToBoard() {
     const title = document.getElementById('titleEdit').value;
     const desc = document.getElementById('descriptionEdit').value;
@@ -162,14 +164,18 @@ function addEditedTaskToBoard() {
 
     if (title && desc && status) {
 
+        const taskToRemove = window.taskToEdit
+        taskToRemove.remove()
         console.log("Hay titulo")
+
 
         const newTask = document.createElement('div');
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
-        newTask.addEventListener('click', function () {
-            taskModalEdit.classList.add("is-active")
+        newTask.addEventListener('click', function (event) {
+            document.getElementById('taskModalEdit').classList.add("is-active")
+            window.taskToEdit = event.currentTarget
         })
 
         newTask.innerHTML =
@@ -196,6 +202,7 @@ function addEditedTaskToBoard() {
         document.getElementById('dateEdit').value = '';
         document.getElementById('priorityEdit').value = '1';
         document.getElementById('stateEdit').value = 'backlog';
+        window.taskToEdit = null
 
     } else {
         alert('Por favor, complete todos los campos.');

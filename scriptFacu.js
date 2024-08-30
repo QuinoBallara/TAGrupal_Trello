@@ -1,3 +1,5 @@
+/// import { taskToEdit } from "./scriptPau.js"
+
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
     const taskModal = document.createElement("div")
@@ -169,8 +171,9 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
-        newTask.addEventListener('click', function () {
+        newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
+            window.taskToEdit = event.currentTarget
         })
 
         newTask.innerHTML =
