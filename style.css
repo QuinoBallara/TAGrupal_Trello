@@ -2,8 +2,64 @@ body,
 html {
     width: 100%;
     height: 100%;
-    background-color: #f1faee;
 }
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    body,
+    html {
+        background-color: #f1faee;
+    }
+
+    .card {
+        background-color: #a8dadc;
+    }
+
+    .card {
+        background-color: #a8dadc;
+    }
+
+    h1,
+    h2,
+    p,
+    h3 {
+        color: #5f0f40;
+    }
+
+    .task {
+        background-color: #83c5be;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body,
+    html {
+        background-color: #333333;
+    }
+
+    .card {
+        background-color: #495f60;
+    }
+
+    .card-title {
+        background-color: #495f60;
+    }
+
+    h1,
+    h2,
+    p,
+    h3 {
+        color: #f1faee;
+    }
+
+    .task {
+        background-color: #3b4c4d;
+    }
+
+
+}
+
 
 .scroller {
     --sb-track-color: #a8dadc;
@@ -51,7 +107,6 @@ h1,
 h2,
 p,
 h3 {
-    color: #5f0f40;
     font-family: 'Moderustic';
 }
 
@@ -101,7 +156,6 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #a8dadc;
     border: 0.01rem solid black;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -110,7 +164,6 @@ h3 {
 
 .card-title {
     width: 100%;
-    background-color: #a8dadc;
     padding: 3%;
     margin-bottom: 1vh;
     border-bottom: 0.01rem solid black;
@@ -128,8 +181,6 @@ h3 {
     align-items: center;
     padding: 0;
     flex-grow: 1;
-    background-color: red;
-
 }
 
 .card-content-test {
@@ -140,14 +191,13 @@ h3 {
     align-items: center;
     padding: 0;
     flex-grow: 1;
-    background-color: green;
 }
 
 .task {
-    background-color: #83c5be;
     margin-bottom: 8%;
     width: 85%;
     border-radius: 5%;
     border: 0.01rem solid black;
     padding: 2.5%;
 }
+
