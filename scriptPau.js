@@ -1,34 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("editTask") // Asigna el ID del botón "Título Descripción"
-    const taskModal = document.createElement("div")
-    taskModal.id = "taskModal"
-    taskModal.className = "modal"
+    const taskModalEdit = document.createElement("div")
+    taskModalEdit.id = "taskModalEdit"
+    taskModalEdit.className = "modal"
 
 
     const modalBackground = document.createElement("div")
     modalBackground.className = "modal-background"
-    taskModal.appendChild(modalBackground)
+    taskModalEdit.appendChild(modalBackground)
 
     const modalContent = document.createElement("div")
     modalContent.className = "modal-content"
-    taskModal.appendChild(modalContent)
+    taskModalEdit.appendChild(modalContent)
 
     const titleInput = document.createElement("input")
     titleInput.type = "text"
-    titleInput.id = "title"
+    titleInput.id = "titleEdit"
     titleInput.placeholder = "Título"
 
     const descriptionTextarea = document.createElement("textarea")
-    descriptionTextarea.id = "description"
+    descriptionTextarea.id = "descriptionEdit"
     descriptionTextarea.placeholder = "Descripción"
 
     const assignInput = document.createElement("input")
     assignInput.type = "text"
-    assignInput.id = "assign"
+    assignInput.id = "assignEdit"
     assignInput.placeholder = "Asignado"
 
     const priorityInput = document.createElement("select")
-    priorityInput.id = "priority"
+    priorityInput.id = "priorityEdit"
 
     const priorityOption1 = document.createElement("option")
     priorityOption1.textContent = "1"
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     priorityInput.appendChild(priorityOption5)
 
     const stateInput = document.createElement("select")
-    stateInput.id = "state"
+    stateInput.id = "stateEdit"
 
     const stateOption1 = document.createElement("option")
     stateOption1.textContent = "Backlog"
@@ -79,15 +79,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dateInput = document.createElement("input")
     dateInput.type = "date"
-    dateInput.id = "date"
+    dateInput.id = "dateEdit"
 
     const acceptButton = document.createElement("button")
-    acceptButton.id = "accept"
+    acceptButton.id = "acceptEdit"
     acceptButton.textContent = "Aceptar"
     acceptButton.className = "button"
 
     const cancelButton = document.createElement("button")
-    cancelButton.id = "cancel"
+    cancelButton.id = "cancelEdit"
     cancelButton.textContent = "Cancelar"
     cancelButton.className = "button"
 
@@ -124,18 +124,24 @@ document.addEventListener("DOMContentLoaded", function () {
     modalContent.appendChild(buttonBox)
 
 
-    document.body.appendChild(taskModal)
+    document.body.appendChild(taskModalEdit)
     taskButton.addEventListener("click", function () {
-        taskModal.classList.add("is-active")
+        taskModalEdit.classList.add("is-active")
     })
 
     acceptButton.addEventListener("click", function () {
-        taskModal.classList.remove("is-active")
-        addTaskToBoard()
+        taskModalEdit.classList.remove("is-active")
+        addEditedTaskToBoard()
     })
 
     cancelButton.addEventListener("click", function () {
-        taskModal.classList.remove("is-active")
+        taskModalEdit.classList.remove("is-active")
+        document.getElementById('titleEdit').value = ''
+        document.getElementById('descriptionEdit').value = ''
+        document.getElementById('assignEdit').value = ''
+        document.getElementById('dateEdit').value = ''
+        document.getElementById('priorityEdit').value = '1'
+        document.getElementById('stateEdit').value = 'backlog'
     })
 
     const columns = document.querySelectorAll('.card');
@@ -146,13 +152,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
-function addTaskToBoard() {
-    const title = document.getElementById('title').value;
-    const desc = document.getElementById('description').value;
-    const status = document.getElementById('state').value;
-    const tasker = document.getElementById('assign').value;
-    const finalDate = document.getElementById('date').value;
-    const priority = document.getElementById('priority').value;
+function addEditedTaskToBoard() {
+    const title = document.getElementById('titleEdit').value;
+    const desc = document.getElementById('descriptionEdit').value;
+    const status = document.getElementById('stateEdit').value;
+    const tasker = document.getElementById('assignEdit').value;
+    const finalDate = document.getElementById('dateEdit').value;
+    const priority = document.getElementById('priorityEdit').value;
 
     if (title && desc && status) {
 
@@ -162,6 +168,9 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
+        newTask.addEventListener('click', function () {
+            taskModalEdit.classList.add("is-active")
+        })
 
         newTask.innerHTML =
             `<h3>${title}</h3>
@@ -181,15 +190,21 @@ function addTaskToBoard() {
         }
 
 
-        document.getElementById('title').value = '';
-        document.getElementById('description').value = '';
-        document.getElementById('assign').value = '';
-        document.getElementById('date').value = '';
-        document.getElementById('priority').value = '1';
-        document.getElementById('state').value = 'backlog';
+        document.getElementById('titleEdit').value = '';
+        document.getElementById('descriptionEdit').value = '';
+        document.getElementById('assignEdit').value = '';
+        document.getElementById('dateEdit').value = '';
+        document.getElementById('priorityEdit').value = '1';
+        document.getElementById('stateEdit').value = 'backlog';
 
     } else {
         alert('Por favor, complete todos los campos.');
+        document.getElementById('titleEdit').value = '';
+        document.getElementById('descriptionEdit').value = '';
+        document.getElementById('assignEdit').value = '';
+        document.getElementById('dateEdit').value = '';
+        document.getElementById('priorityEdit').value = '1';
+        document.getElementById('stateEdit').value = 'backlog';
     }
 }
 

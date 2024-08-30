@@ -136,6 +136,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cancelButton.addEventListener("click", function () {
         taskModal.classList.remove("is-active")
+        document.getElementById('title').value = ''
+        document.getElementById('description').value = ''
+        document.getElementById('assign').value = ''
+        document.getElementById('date').value = ''
+        document.getElementById('priority').value = '1'
+        document.getElementById('state').value = 'backlog'
+
     })
 
     const columns = document.querySelectorAll('.card');
@@ -162,6 +169,9 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
+        newTask.addEventListener('click', function () {
+            document.getElementById('taskModalEdit').classList.add("is-active")
+        })
 
         newTask.innerHTML =
             `<h3>${title}</h3>
@@ -190,6 +200,12 @@ function addTaskToBoard() {
 
     } else {
         alert('Por favor, complete todos los campos.');
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('assign').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('priority').value = '1';
+        document.getElementById('state').value = 'backlog';
     }
 }
 
