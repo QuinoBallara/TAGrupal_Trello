@@ -145,3 +145,34 @@ h3 {
     border: 0.01rem solid black;
     padding: 2.5%;
 }
+
+/*
+Para 1440px,
+se pide que haya un scrolling horizontal en la pantalla principal,
+para poder ver las columnas que quedan por fuera.
+
+Para 768px, se pide que se haga un wrap,
+de manera que no sea necesario hacer scrolling.
+
+Para 425px, se pide que haya un scrolling vertical,
+de manera de poder ver todas las columnas. El botón de agregar tarea en 425px pasa de un posicionamiento estático a un posicionamiento absoluto. 
+
+Para todas las resoluciones, una vez haya establecido una altura apropiada para las columnas,
+se pide que haya un scrolling vertical dentro de cada uno de ellas en caso de que sea necesario (si hay demasiadas tareas a mostrar para esa columna).
+*/
+
+
+@media (min-width:768px) {}
+
+@media (min-width:1440px) {
+    .container {
+        flex-wrap: wrap;
+        overflow-x: auto;
+        overflow-y: none;
+    }
+
+    .card {
+        width: 20%;
+    }
+
+}
