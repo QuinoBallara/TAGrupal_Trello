@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log('El DOM está listo');
-    const columns = document.querySelectorAll('.card');
+    const columns = document.querySelectorAll('.card-content');
     columns.forEach(column => {
         column.addEventListener('dragover', allowDrop);
         column.addEventListener('drop', drop);
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tasks.forEach((task, index) => {
         task.id = `task-${index}`;
         task.addEventListener('dragstart', drag);
+        task.draggable = true;
     });
 });
 

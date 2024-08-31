@@ -189,7 +189,7 @@ function addTaskToBoard() {
 
         if (column) {
             console.log("Hay columna")
-            column.querySelector('.card-content').appendChild(newTask);
+            column.appendChild(newTask);
         }
 
 
