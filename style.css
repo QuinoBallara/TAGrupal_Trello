@@ -3,6 +3,7 @@ html {
     width: 100%;
     height: 100%;
     background-color: #f1faee;
+    font-family: 'Moderustic', sans-serif;
 }
 
 .scroller {
@@ -15,7 +16,7 @@ html {
 }
 
 .scroller::-webkit-scrollbar {
-    width: var(--sb-size)
+    width: var(--sb-size);
 }
 
 .scroller::-webkit-scrollbar-track {
@@ -26,19 +27,6 @@ html {
 .scroller::-webkit-scrollbar-thumb {
     background: var(--sb-thumb-color);
     border-radius: 3px;
-
-}
-
-.scroller::-webkit-scrollbar-button:start:increment {
-    height: 2%;
-    display: block;
-    background: transparent;
-}
-
-.scroller::-webkit-scrollbar-button:end:increment {
-    height: 2%;
-    display: block;
-    background: transparent;
 }
 
 @supports not selector(::-webkit-scrollbar) {
@@ -52,27 +40,6 @@ h2,
 p,
 h3 {
     color: #5f0f40;
-    font-family: 'Moderustic';
-}
-
-#boton {
-    background-color: #3b7080;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-}
-
-#addTask {
-    font-size: 2vb;
-    text-align: center;
-    position: fixed;
-    border-radius: 10vb;
-    margin: 5vh 2vb 0 0;
-    z-index: 1;
-}
-
-.header-title {
-    padding-top: 1.2rem;
 }
 
 #topBar {
@@ -82,6 +49,27 @@ h3 {
 
 #topBar h1 {
     text-align: center;
+    font-size: 2rem;
+}
+
+#addTask, #editTask {
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 50%;
+    margin: 1rem;
+}
+
+#addTask {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #3b7080;
+    color: white;
+}
+
+#editTask {
+    background-color: #83c5be;
+    color: white;
 }
 
 .container {
@@ -94,7 +82,6 @@ h3 {
 }
 
 .card {
-    /*margin: auto auto 10% auto !important;*/
     width: 20%;
     min-width: 200px;
     min-height: 60vh;
@@ -102,38 +89,54 @@ h3 {
     flex-direction: column;
     align-items: center;
     background-color: #a8dadc;
-    border: 0.01rem solid black;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    border: 2px solid #3b7080;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .card-title {
     width: 100%;
-    position: absolute;
-    background-color: #a8dadc;
-    padding: 3%;
-    border-bottom: 0.01rem solid black;
-
-}
-
-.card-title h2 {
+    background-color: #3b7080;
+    color: white;
+    padding: 1rem;
+    border-bottom: 2px solid #5f0f40;
     text-align: center;
 }
 
 .card-content {
-    margin-top: 24%;
+    flex: 1;
     width: 100%;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0;
+    overflow-y: auto;
 }
 
 .task {
-    background-color: #83c5be;
-    margin-bottom: 8%;
-    width: 85%;
-    border-radius: 5%;
-    border: 0.01rem solid black;
-    padding: 2.5%;
+    background-color: #ffffff;
+    margin-bottom: 1rem;
+    width: 90%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.task:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.02);
+}
+
+.task h3 {
+    margin: 0;
+    color: #333;
+}
+
+.task p {
+    margin: 0.5rem 0;
+    color: #666;
 }

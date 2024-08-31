@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" type="module" defer></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
@@ -27,65 +26,86 @@
     <button id="editTask" class="button is-small is-primary">Editar</button>
     <!--    </div>-->
     <div class="container">
-        <div id="backlog" class="card" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="card-title">
-                <h2>BACKLOG</h2>
+        <div id="backlog" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>BACKLOG</h2>
+        </div>
+        <div id="to-do" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>TO DO</h2>
+            <div class="task">
+                <p>Título</p>
+                <p>Descripción</p>
             </div>
-            <div class="card-content scroller">
-
+            <div class="task">
+                <p>Título</p>
+                <p>Descripción</p>
+            </div>
+            <div class="task">
+                <p>Título</p>
+                <p>Descripción</p>
+            </div>
+            <div class="task">
+                <p>Título</p>
+                <p>Descripción</p>
+            </div>
+            <div class="task">
+                <p>Título</p>
+                <p>Descripción</p>
             </div>
         </div>
-        <div id="to-do" class="card" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="card-title">
-                <h2>TO DO</h2>
-            </div>
-            <div class="card-content scroller">
-                <div class="task">
-                    <h3>Título</h3>
-                    <p>Descripción</p>
+        <div id="in-progress" class="card scroller" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>IN PROGRESS</h2>
+        </div>
+        <div id="done" class="card scroller">
+            <h2>DONE</h2>
+        </div>
+        <div id="blocked" class="card scroller">
+            <h2>BLOCKED</h2>
+        </div>
+        <div id="taskModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Editar Tarea</h2>
+                    <button class="modal-close-button" aria-label="Close">&times;</button>
                 </div>
-                <div class="task">
-                    <h3>Título</h3>
-                    <p>Descripción</p>
+                <div class="modal-body">
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" placeholder="Título">
+        
+                    <label for="description">Descripción:</label>
+                    <textarea id="description" placeholder="Descripción"></textarea>
+        
+                    <label for="assign">Asignado:</label>
+                    <input type="text" id="assign" placeholder="Asignado">
+        
+                    <label for="priority">Prioridad:</label>
+                    <select id="priority">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+        
+                    <label for="state">Estado:</label>
+                    <select id="state">
+                        <option value="backlog">Backlog</option>
+                        <option value="To Do">To Do</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="done">Done</option>
+                        <option value="blocked">Blocked</option>
+                    </select>
+        
+                    <label for="date">Fecha:</label>
+                    <input type="date" id="date">
                 </div>
-                <div class="task">
-                    <h3>Título</h3>
-                    <p>Descripción</p>
-                </div>
-                <div class="task">
-                    <h3>Título</h3>
-                    <p>Descripción</p>
-                </div>
-                <div class="task">
-                    <p>Título</p>
-                    <p>Descripción</p>
+                <div class="button-container">
+                    <button id="accept" class="button is-primary">Aceptar</button>
+                    <button id="cancel" class="button is-light">Cancelar</button>
                 </div>
             </div>
         </div>
-        <div id="in-progress" class="card" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <div class="card-title">
-                <h2>IN PROGRESS</h2>
-            </div>
-            <div class="card-content scroller">
-
-            </div>
-        </div>
-        <div id="blocked" class="card">
-            <div class="card-title">
-                <h2>BLOCKED</h2>
-            </div>
-            <div class="card-content scroller">
-
-            </div>
-        </div>
-        <div id="done" class="card">
-            <div class="card-title">
-                <h2>DONE</h2>
-            </div>
-            <div class="card-content scroller">
-
-            </div>
-        </div>
+    </div>
     </div>
 
 </body>
