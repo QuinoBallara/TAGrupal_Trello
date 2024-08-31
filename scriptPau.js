@@ -177,22 +177,22 @@ function addEditedTaskToBoard() {
 
         newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
-            document.getElementById('titleEdit').value = event.currentTarget.querySelector('#title').textContent;
+            document.getElementById('titleEdit').value = event.currentTarget.querySelector('#titleTask').textContent;
             document.getElementById('descriptionEdit').value = event.currentTarget.querySelector('#desc').textContent;
             document.getElementById('stateEdit').value = event.currentTarget.querySelector('#status').textContent;
             document.getElementById('assignEdit').value = event.currentTarget.querySelector('#assignee').textContent;
             document.getElementById('dateEdit').value = event.currentTarget.querySelector('#finalDate').textContent;
-            document.getElementById('priorityEdit').value = event.currentTarget.querySelector('#priority').textContent;
+            document.getElementById('priorityEdit').value = event.currentTarget.querySelector('#priorityTask').textContent;
             window.taskToEdit = event.currentTarget
         })
 
         newTask.innerHTML =
-            `<h3 id="title" >${title}</h3>
+            `<h3 id="titleTask" >${title}</h3>
                 <p id="desc" >${desc}</p>
                 <p id="status" class="hide">${status}</p>
                 <p id="assignee" class="hide">${tasker}</p>
                 <p id="finalDate" class="hide">${finalDate}</p>
-                <p id="priority" class="hide">${priority}</p>`;
+                <p id="priorityTask" class="hide">${priority}</p>`;
 
         console.log("Mi estado es:", status)
 
