@@ -1,3 +1,5 @@
+/// import { taskToEdit } from "./scriptPau.js"
+
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
     const taskModal = document.createElement("div")
