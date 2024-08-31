@@ -164,11 +164,12 @@ se pide que haya un scrolling vertical dentro de cada uno de ellas en caso de qu
 
 
 @media (min-width:768px) {
-    .container {}
 
     .card {
         max-height: 5rem;
-        width: 19rem;
+        min-height: 45%;
+        width: 30%;
+        min-width: none;
         max-width: 19rem;
     }
 
