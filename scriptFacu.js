@@ -229,6 +229,6 @@ function drop(ev) {
     if (ev.target.classList.contains('card')) {
         ev.target.appendChild(taskElement);
     } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').appendChild(taskElement);
+        ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
     }
 }

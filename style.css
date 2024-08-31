@@ -6,6 +6,7 @@ html {
 
 /* Light mode */
 @media (prefers-color-scheme: light) {
+
     body,
     html {
         background-color: #f1faee;
@@ -33,6 +34,7 @@ html {
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
+
     body,
     html {
         background-color: #333333;
@@ -185,6 +187,7 @@ h3 {
     flex-direction: column;
     align-items: center;
     padding-top: 0.5rem;
+    flex-grow: 1;
     /* Desactivado para que no haya scroll bars en mobile
     overflow-y: scroll;
     overflow-x: hidden;
