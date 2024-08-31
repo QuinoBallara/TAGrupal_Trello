@@ -43,7 +43,7 @@ function drop(ev) {
     const dropTarget = ev.target.closest('.card');
     if (dropTarget) {
         try {
-            dropTarget.appendChild(taskElement);
+            ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
         } catch (error) {
             console.error("Error al intentar soltar", error);
         }
