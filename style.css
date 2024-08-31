@@ -2,6 +2,7 @@ body,
 html {
     width: 100%;
     height: 100%;
+    overflow-y: auto;
 }
 
 /* Light mode */
@@ -113,7 +114,6 @@ h3 {
 }
 
 #boton {
-    background-color: #3b7080;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -124,8 +124,10 @@ h3 {
     text-align: center;
     position: fixed;
     border-radius: 10vb;
-    margin: 5vh 2vb 0 0;
+    margin: 90vh 2vb 0 0;
     z-index: 1;
+    border: 0.1rem solid black !important;
+    background-color: #197a71;
 }
 
 .header-title {
@@ -139,7 +141,7 @@ h3 {
 
 #topBar h1 {
     text-align: center;
-    font-size: 3vb;
+    font-size: 5vb;
 }
 
 .container {
@@ -152,10 +154,9 @@ h3 {
 }
 
 .card {
-    /*margin: auto auto 10% auto !important;*/
-    width: 90%;
+    width: 85%;
     min-width: 200px;
-    min-height: 60vh;
+    min-height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,9 +164,6 @@ h3 {
     overflow-y: hidden;
     overflow-x: hidden;
     gap: 1vh;
-    /* Desactivado para mobile
-     max-height: 5rem;
-     */
 }
 
 .card-title {
@@ -188,10 +186,10 @@ h3 {
     align-items: center;
     padding-top: 0.5rem;
     flex-grow: 1;
-    /* Desactivado para que no haya scroll bars en mobile
-    overflow-y: scroll;
-    overflow-x: hidden;
-    */
+}
+
+.task>* {
+    word-break: break-all;
 }
 
 .task {
@@ -200,4 +198,90 @@ h3 {
     border-radius: 5%;
     border: 0.01rem solid black;
     padding: 2.5%;
+}
+
+@media (min-width:768px) {
+
+    body,
+    html {
+        overflow-x: auto;
+    }
+
+    #topBar {
+        margin-bottom: 1%;
+    }
+
+    .card {
+        max-height: 5rem;
+        min-height: 45%;
+        width: 30%;
+        min-width: none;
+        max-width: 19rem;
+    }
+
+    .card-content {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #addTask {
+        position: relative;
+        margin: auto 2% 2% 80%;
+    }
+}
+
+@media (min-width:1440px) {
+    .container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        margin-left: 2vb;
+    }
+
+    #topBar {
+        margin-bottom: 1%;
+    }
+
+    .card h2 {
+        font-size: 1.4vb;
+    }
+
+    .card {
+        min-height: 30vb;
+        max-height: 76vb;
+        min-width: 35vb;
+    }
+
+    .card-content {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+@media (min-width:1740px) {
+    .container {
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    #topBar {
+        margin-bottom: 1%;
+    }
+
+    .card h2 {
+        font-size: 1.4vb;
+    }
+
+    .card {
+        min-height: 30vb;
+        max-height: 76vb;
+        min-width: 35vb;
+    }
+
+    .card-content {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 }
