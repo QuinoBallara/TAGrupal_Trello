@@ -1,5 +1,3 @@
-/// import { taskToEdit } from "./scriptPau.js"
-
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
     const taskModal = document.createElement("div")
@@ -171,6 +169,7 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
+        newTask.id = `task-${document.querySelectorAll('.task').length}`;
         newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
             window.taskToEdit = event.currentTarget
@@ -190,7 +189,7 @@ function addTaskToBoard() {
 
         if (column) {
             console.log("Hay columna")
-            column.querySelector('.card-content').appendChild(newTask);
+            column.appendChild(newTask);
         }
 
 
@@ -228,6 +227,6 @@ function drop(ev) {
     if (ev.target.classList.contains('card')) {
         ev.target.appendChild(taskElement);
     } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
+        ev.target.closest('.card').appendChild(taskElement);
     }
 }

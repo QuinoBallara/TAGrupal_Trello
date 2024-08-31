@@ -1,34 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("editTask") // Asigna el ID del botón "Título Descripción"
-    const taskModalEdit = document.createElement("div")
-    taskModalEdit.id = "taskModalEdit"
-    taskModalEdit.className = "modal"
+    const taskModal = document.createElement("div")
+    taskModal.id = "taskModal"
+    taskModal.className = "modal"
 
 
     const modalBackground = document.createElement("div")
     modalBackground.className = "modal-background"
-    taskModalEdit.appendChild(modalBackground)
+    taskModal.appendChild(modalBackground)
 
     const modalContent = document.createElement("div")
     modalContent.className = "modal-content"
-    taskModalEdit.appendChild(modalContent)
+    taskModal.appendChild(modalContent)
 
     const titleInput = document.createElement("input")
     titleInput.type = "text"
-    titleInput.id = "titleEdit"
+    titleInput.id = "title"
     titleInput.placeholder = "Título"
 
     const descriptionTextarea = document.createElement("textarea")
-    descriptionTextarea.id = "descriptionEdit"
+    descriptionTextarea.id = "description"
     descriptionTextarea.placeholder = "Descripción"
 
     const assignInput = document.createElement("input")
     assignInput.type = "text"
-    assignInput.id = "assignEdit"
+    assignInput.id = "assign"
     assignInput.placeholder = "Asignado"
 
     const priorityInput = document.createElement("select")
-    priorityInput.id = "priorityEdit"
+    priorityInput.id = "priority"
 
     const priorityOption1 = document.createElement("option")
     priorityOption1.textContent = "1"
@@ -53,23 +53,23 @@ document.addEventListener("DOMContentLoaded", function () {
     priorityInput.appendChild(priorityOption5)
 
     const stateInput = document.createElement("select")
-    stateInput.id = "stateEdit"
+    stateInput.id = "state"
 
     const stateOption1 = document.createElement("option")
     stateOption1.textContent = "Backlog"
     stateOption1.value = "backlog"
     const stateOption2 = document.createElement("option")
     stateOption2.textContent = "To do"
-    stateOption2.value = "to-do"
+    stateOption2.value = "To Do"
     const stateOption3 = document.createElement("option")
-    stateOption3.textContent = "In Progress"
+    stateOption3.textContent = "In progress"
     stateOption3.value = "in-progress"
     const stateOption4 = document.createElement("option")
     stateOption4.textContent = "Done"
     stateOption4.value = "done"
     const stateOption5 = document.createElement("option")
     stateOption5.textContent = "Blocked"
-    stateOption5.value = "blocked"
+    stateOption5.value = "Blocked"
 
     stateInput.appendChild(stateOption1)
     stateInput.appendChild(stateOption2)
@@ -79,15 +79,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const dateInput = document.createElement("input")
     dateInput.type = "date"
-    dateInput.id = "dateEdit"
+    dateInput.id = "date"
 
     const acceptButton = document.createElement("button")
-    acceptButton.id = "acceptEdit"
+    acceptButton.id = "accept"
     acceptButton.textContent = "Aceptar"
     acceptButton.className = "button"
 
     const cancelButton = document.createElement("button")
-    cancelButton.id = "cancelEdit"
+    cancelButton.id = "cancel"
     cancelButton.textContent = "Cancelar"
     cancelButton.className = "button"
 
@@ -124,25 +124,18 @@ document.addEventListener("DOMContentLoaded", function () {
     modalContent.appendChild(buttonBox)
 
 
-    document.body.appendChild(taskModalEdit)
+    document.body.appendChild(taskModal)
     taskButton.addEventListener("click", function () {
-        taskModalEdit.classList.add("is-active")
+        taskModal.classList.add("is-active")
     })
 
     acceptButton.addEventListener("click", function () {
-        taskModalEdit.classList.remove("is-active")
-        addEditedTaskToBoard()
+        taskModal.classList.remove("is-active")
+        addTaskToBoard()
     })
 
     cancelButton.addEventListener("click", function () {
-        taskModalEdit.classList.remove("is-active")
-        document.getElementById('titleEdit').value = ''
-        document.getElementById('descriptionEdit').value = ''
-        document.getElementById('assignEdit').value = ''
-        document.getElementById('dateEdit').value = ''
-        document.getElementById('priorityEdit').value = '1'
-        document.getElementById('stateEdit').value = 'backlog'
-        window.taskToEdit = null
+        taskModal.classList.remove("is-active")
     })
 
     const columns = document.querySelectorAll('.card');
@@ -153,30 +146,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
-window.taskToEdit = null
-function addEditedTaskToBoard() {
-    const title = document.getElementById('titleEdit').value;
-    const desc = document.getElementById('descriptionEdit').value;
-    const status = document.getElementById('stateEdit').value;
-    const tasker = document.getElementById('assignEdit').value;
-    const finalDate = document.getElementById('dateEdit').value;
-    const priority = document.getElementById('priorityEdit').value;
+function addTaskToBoard() {
+    const title = document.getElementById('title').value;
+    const desc = document.getElementById('description').value;
+    const status = document.getElementById('state').value;
+    const tasker = document.getElementById('assign').value;
+    const finalDate = document.getElementById('date').value;
+    const priority = document.getElementById('priority').value;
 
     if (title && desc && status) {
 
-        const taskToRemove = window.taskToEdit
-        taskToRemove.remove()
         console.log("Hay titulo")
-
 
         const newTask = document.createElement('div');
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
-        newTask.addEventListener('click', function (event) {
-            document.getElementById('taskModalEdit').classList.add("is-active")
-            window.taskToEdit = event.currentTarget
-        })
 
         newTask.innerHTML =
             `<h3>${title}</h3>
@@ -192,26 +177,19 @@ function addEditedTaskToBoard() {
 
         if (column) {
             console.log("Hay columna")
-            column.querySelector('.card-content').appendChild(newTask);
+            column.appendChild(newTask);
         }
 
 
-        document.getElementById('titleEdit').value = '';
-        document.getElementById('descriptionEdit').value = '';
-        document.getElementById('assignEdit').value = '';
-        document.getElementById('dateEdit').value = '';
-        document.getElementById('priorityEdit').value = '1';
-        document.getElementById('stateEdit').value = 'backlog';
-        window.taskToEdit = null
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('assign').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('priority').value = '1';
+        document.getElementById('state').value = 'backlog';
 
     } else {
         alert('Por favor, complete todos los campos.');
-        document.getElementById('titleEdit').value = '';
-        document.getElementById('descriptionEdit').value = '';
-        document.getElementById('assignEdit').value = '';
-        document.getElementById('dateEdit').value = '';
-        document.getElementById('priorityEdit').value = '1';
-        document.getElementById('stateEdit').value = 'backlog';
     }
 }
 
@@ -231,6 +209,6 @@ function drop(ev) {
     if (ev.target.classList.contains('card')) {
         ev.target.appendChild(taskElement);
     } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
+        ev.target.closest('.card').appendChild(taskElement);
     }
 }
