@@ -136,13 +136,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cancelButton.addEventListener("click", function () {
         taskModal.classList.remove("is-active")
+        document.getElementById('title').value = ''
+        document.getElementById('description').value = ''
+        document.getElementById('assign').value = ''
+        document.getElementById('date').value = ''
+        document.getElementById('priority').value = '1'
+        document.getElementById('state').value = 'backlog'
+
     })
 
-    const tasks = document.querySelectorAll('.task');
-    tasks.forEach(task => {
-        task.draggable = true;
-        task.addEventListener('dragstart', drag);
-    })
+    const columns = document.querySelectorAll('.card');
+    columns.forEach(column => {
+        column.addEventListener('dragover', allowDrop);
+        column.addEventListener('drop', drop);
+    });
 
 })
 
@@ -156,13 +163,17 @@ function addTaskToBoard() {
 
     if (title && desc && status) {
 
-        console.log("Hay titulo facu")
+        console.log("Hay titulo")
 
         const newTask = document.createElement('div');
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
         newTask.id = `task-${document.querySelectorAll('.task').length}`;
+        newTask.addEventListener('click', function (event) {
+            document.getElementById('taskModalEdit').classList.add("is-active")
+            window.taskToEdit = event.currentTarget
+        })
 
         newTask.innerHTML =
             `<h3>${title}</h3>
@@ -176,11 +187,9 @@ function addTaskToBoard() {
 
         const column = document.getElementById(status);
 
-        console.log("Mi columna es:", column.id)
-
         if (column) {
             console.log("Hay columna")
-            column.appendChild(newTask);
+            column.querySelector('.card-content').appendChild(newTask);
         }
 
 
@@ -193,6 +202,31 @@ function addTaskToBoard() {
 
     } else {
         alert('Por favor, complete todos los campos.');
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('assign').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('priority').value = '1';
+        document.getElementById('state').value = 'backlog';
     }
 }
 
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    const taskElement = document.getElementById(data);
+
+    if (ev.target.classList.contains('card')) {
+        ev.target.appendChild(taskElement);
+    } else if (ev.target.closest('.card')) {
+        ev.target.closest('.card').appendChild(taskElement);
+    }
+}

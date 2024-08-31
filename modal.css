@@ -67,24 +67,28 @@
     margin: 50px;
 }
 
-#accept {
+#accept,
+#acceptEdit {
     background-color: green;
     color: #000;
     border-radius: 20px;
     font-size: 13px;
 }
 
-#accept:hover {
+#accept:hover,
+#acceptEdit:hover {
     background-color: #b7d6b8;
 }
 
-#cancel {
+#cancel,
+#cancelEdit {
     background-color: red;
     color: #000;
     border-radius: 20px;
     font-size: 13px;
 }
 
-#cancel:hover {
+#cancel:hover,
+#cancelEdit:hover {
     background-color: rgb(186, 151, 151);
 }

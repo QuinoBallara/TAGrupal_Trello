@@ -138,6 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
         taskModal.classList.remove("is-active")
     })
 
+    const columns = document.querySelectorAll('.card');
+    columns.forEach(column => {
+        column.addEventListener('dragover', allowDrop);
+        column.addEventListener('drop', drop);
+    });
 
 })
 
@@ -185,5 +190,25 @@ function addTaskToBoard() {
 
     } else {
         alert('Por favor, complete todos los campos.');
+    }
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    const data = ev.dataTransfer.getData("text");
+    const taskElement = document.getElementById(data);
+
+    if (ev.target.classList.contains('card')) {
+        ev.target.appendChild(taskElement);
+    } else if (ev.target.closest('.card')) {
+        ev.target.closest('.card').appendChild(taskElement);
     }
 }
