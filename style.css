@@ -2,8 +2,67 @@ body,
 html {
     width: 100%;
     height: 100%;
-    background-color: #f1faee;
+    overflow-y: auto;
 }
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+
+    body,
+    html {
+        background-color: #f1faee;
+    }
+
+    .card {
+        background-color: #a8dadc;
+    }
+
+    .card {
+        background-color: #a8dadc;
+    }
+
+    h1,
+    h2,
+    p,
+    h3 {
+        color: #5f0f40;
+    }
+
+    .task {
+        background-color: #83c5be;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+
+    body,
+    html {
+        background-color: #333333;
+    }
+
+    .card {
+        background-color: #495f60;
+    }
+
+    .card-title {
+        background-color: #495f60;
+    }
+
+    h1,
+    h2,
+    p,
+    h3 {
+        color: #f1faee;
+    }
+
+    .task {
+        background-color: #3b4c4d;
+    }
+
+
+}
+
 
 .scroller {
     --sb-track-color: #a8dadc;
@@ -51,7 +110,6 @@ h1,
 h2,
 p,
 h3 {
-    color: #5f0f40;
     font-family: 'Moderustic';
 }
 
@@ -96,23 +154,21 @@ h3 {
 }
 
 .card {
-    /*margin: auto auto 10% auto !important;*/
     width: 85%;
     min-width: 200px;
     min-height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #a8dadc;
     border: 0.01rem solid black;
     overflow-y: hidden;
     overflow-x: hidden;
+    gap: 1vh;
 }
 
 .card-title {
     width: 100%;
     position: absolute;
-    background-color: #a8dadc;
     padding: 0.3rem;
     border-bottom: 0.01rem solid black;
 
@@ -129,34 +185,20 @@ h3 {
     flex-direction: column;
     align-items: center;
     padding-top: 0.5rem;
+    flex-grow: 1;
 }
 
 .task>* {
     word-break: break-all;
 }
 
-.task h3 {
-    font-weight: 500;
-}
-
 .task {
-    background-color: #83c5be;
     margin-bottom: 8%;
     width: 95%;
     border-radius: 5%;
     border: 0.01rem solid black;
     padding: 2.5%;
 }
-
-/*
-Para 1440px,
-se pide que haya un scrolling horizontal en la pantalla principal,
-para poder ver las columnas que quedan por fuera.
-
-
-falta lo del boton
-*/
-
 
 @media (min-width:768px) {
 
@@ -165,7 +207,7 @@ falta lo del boton
         overflow-x: auto;
     }
 
-    #topbar {
+    #topBar {
         margin-bottom: 1%;
     }
 
@@ -178,7 +220,7 @@ falta lo del boton
     }
 
     .card-content {
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
     }
 
@@ -196,7 +238,7 @@ falta lo del boton
         margin-left: 2vb;
     }
 
-    #topbar {
+    #topBar {
         margin-bottom: 1%;
     }
 
@@ -206,12 +248,12 @@ falta lo del boton
 
     .card {
         min-height: 30vb;
-        max-height: 70vb;
+        max-height: 76vb;
         min-width: 35vb;
     }
 
     .card-content {
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
     }
 }
@@ -224,7 +266,7 @@ falta lo del boton
         margin-left: auto;
     }
 
-    #topbar {
+    #topBar {
         margin-bottom: 1%;
     }
 
@@ -234,12 +276,12 @@ falta lo del boton
 
     .card {
         min-height: 30vb;
-        max-height: 70vb;
+        max-height: 76vb;
         min-width: 35vb;
     }
 
     .card-content {
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
     }
 }
