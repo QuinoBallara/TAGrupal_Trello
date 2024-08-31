@@ -56,7 +56,6 @@ h3 {
 }
 
 #boton {
-    background-color: #3b7080;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -67,8 +66,10 @@ h3 {
     text-align: center;
     position: fixed;
     border-radius: 10vb;
-    margin: 5vh 2vb 0 0;
+    margin: 90vh 2vb 0 0;
     z-index: 1;
+    border: 0.1rem solid black !important;
+    background-color: #197a71;
 }
 
 .header-title {
@@ -82,7 +83,7 @@ h3 {
 
 #topBar h1 {
     text-align: center;
-    font-size: 3vb;
+    font-size: 5vb;
 }
 
 .container {
@@ -98,7 +99,7 @@ h3 {
     /*margin: auto auto 10% auto !important;*/
     width: 85%;
     min-width: 200px;
-    min-height: 60vh;
+    min-height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,18 +153,21 @@ Para 1440px,
 se pide que haya un scrolling horizontal en la pantalla principal,
 para poder ver las columnas que quedan por fuera.
 
-Para 768px, se pide que se haga un wrap,
-de manera que no sea necesario hacer scrolling.
 
-Para 425px, se pide que haya un scrolling vertical,
-de manera de poder ver todas las columnas. El botón de agregar tarea en 425px pasa de un posicionamiento estático a un posicionamiento absoluto. 
-
-Para todas las resoluciones, una vez haya establecido una altura apropiada para las columnas,
-se pide que haya un scrolling vertical dentro de cada uno de ellas en caso de que sea necesario (si hay demasiadas tareas a mostrar para esa columna).
+falta lo del boton
 */
 
 
 @media (min-width:768px) {
+
+    body,
+    html {
+        overflow-x: auto;
+    }
+
+    #topbar {
+        margin-bottom: 1%;
+    }
 
     .card {
         max-height: 5rem;
@@ -177,6 +181,65 @@ se pide que haya un scrolling vertical dentro de cada uno de ellas en caso de qu
         overflow-y: scroll;
         overflow-x: hidden;
     }
+
+    #addTask {
+        position: relative;
+        margin: auto 2% 2% 80%;
+    }
 }
 
-@media (min-width:1440px) {}
+@media (min-width:1440px) {
+    .container {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: flex-start;
+        margin-left: 2vb;
+    }
+
+    #topbar {
+        margin-bottom: 1%;
+    }
+
+    .card h2 {
+        font-size: 1.4vb;
+    }
+
+    .card {
+        min-height: 30vb;
+        max-height: 70vb;
+        min-width: 35vb;
+    }
+
+    .card-content {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media (min-width:1740px) {
+    .container {
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    #topbar {
+        margin-bottom: 1%;
+    }
+
+    .card h2 {
+        font-size: 1.4vb;
+    }
+
+    .card {
+        min-height: 30vb;
+        max-height: 70vb;
+        min-width: 35vb;
+    }
+
+    .card-content {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
