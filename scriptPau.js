@@ -173,18 +173,26 @@ function addEditedTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
+        newTask.id = `task-${document.querySelectorAll('.task').length}`;
+
         newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
+            document.getElementById('titleEdit').value = event.currentTarget.querySelector('#title').textContent;
+            document.getElementById('descriptionEdit').value = event.currentTarget.querySelector('#desc').textContent;
+            document.getElementById('stateEdit').value = event.currentTarget.querySelector('#status').textContent;
+            document.getElementById('assignEdit').value = event.currentTarget.querySelector('#assignee').textContent;
+            document.getElementById('dateEdit').value = event.currentTarget.querySelector('#finalDate').textContent;
+            document.getElementById('priorityEdit').value = event.currentTarget.querySelector('#priority').textContent;
             window.taskToEdit = event.currentTarget
         })
 
         newTask.innerHTML =
-            `<h3>${title}</h3>
-                <p>${desc}</p>
-                <p class="hide">${status}</p>
-                <p class="hide">${tasker}</p>
-                <p class="hide">${finalDate}</p>
-                <p class="hide">${priority}</p>`;
+            `<h3 id="title" >${title}</h3>
+                <p id="desc" >${desc}</p>
+                <p id="status" class="hide">${status}</p>
+                <p id="assignee" class="hide">${tasker}</p>
+                <p id="finalDate" class="hide">${finalDate}</p>
+                <p id="priority" class="hide">${priority}</p>`;
 
         console.log("Mi estado es:", status)
 
