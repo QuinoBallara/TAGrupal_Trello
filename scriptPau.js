@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const taskButton = document.getElementById("editTask") // Asigna el ID del botón "Título Descripción"
     const taskModalEdit = document.createElement("div")
     taskModalEdit.id = "taskModalEdit"
     taskModalEdit.className = "modal"
@@ -125,9 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     document.body.appendChild(taskModalEdit)
-    taskButton.addEventListener("click", function () {
-        taskModalEdit.classList.add("is-active")
-    })
 
     acceptButton.addEventListener("click", function () {
         taskModalEdit.classList.remove("is-active")

@@ -10,11 +10,7 @@ html {
 
     body,
     html {
-        background-color: #f1faee;
-    }
-
-    .card {
-        background-color: #a8dadc;
+        background-color: floralwhite;
     }
 
     .card {
@@ -24,13 +20,19 @@ html {
     h1,
     h2,
     p,
-    h3 {
+    h3,
+    #addTask {
         color: #5f0f40;
     }
 
     .task {
-        background-color: #83c5be;
+        background-color: white;
     }
+
+    #addTask {
+        background-color: #a8dadc;
+    }
+
 }
 
 /* Dark mode */
@@ -58,6 +60,10 @@ html {
 
     .task {
         background-color: #3b4c4d;
+    }
+
+    #addTask {
+        background-color: #197a71;
     }
 
 
@@ -127,7 +133,6 @@ h3 {
     margin: 90vh 2vb 0 0;
     z-index: 1;
     border: 0.1rem solid black !important;
-    background-color: #197a71;
 }
 
 .header-title {
@@ -188,6 +193,17 @@ h3 {
     flex-grow: 1;
 }
 
+.card-content h3 {
+    font-weight: 600;
+    font-size: 3vh;
+
+}
+
+h3,
+p {
+    padding: 1vh;
+}
+
 .task>* {
     word-break: break-all;
 }
@@ -195,7 +211,7 @@ h3 {
 .task {
     margin-bottom: 8%;
     width: 95%;
-    border-radius: 5%;
+    border-radius: 3vh;
     border: 0.01rem solid black;
     padding: 2.5%;
 }
