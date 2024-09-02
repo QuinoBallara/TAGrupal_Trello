@@ -87,6 +87,10 @@
 }
 
 .modal-content {
+<<<<<<< HEAD
+=======
+    background-color: #9bcdd9;
+>>>>>>> e2697e1d593ba366223cb0569f474bf1b81c15af
     padding: 2rem;
     border: 1px solid #ddd;
     width: 80%;
@@ -113,6 +117,10 @@
 
 .modal-header h2 {
     margin: 0;
+<<<<<<< HEAD
+=======
+    color: #0a0a0a;
+>>>>>>> e2697e1d593ba366223cb0569f474bf1b81c15af
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
 }
@@ -163,6 +171,7 @@
     resize: vertical;
 }
 
+<<<<<<< HEAD
 
 .button-container #accept:hover,
 #acceptEdit:hover {
@@ -172,6 +181,29 @@
 
 .button-container #cancel:hover,
 #cancelEdit:hover {
+=======
+.button-container #accept,
+#acceptEdit {
+    background-color: #2ecc71;
+}
+
+.button-container #accept:hover,
+#acceptEdit:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+}
+
+.button-container #cancel,
+#cancelEdit,
+#deleteEdit {
+    background-color: #e74c3c;
+}
+
+.button-container #cancel:hover,
+#cancelEdit:hover,
+#deleteEdit:hover {
+    background-color: #c0392b;
+>>>>>>> e2697e1d593ba366223cb0569f474bf1b81c15af
     transform: scale(1.05);
 }
 
@@ -210,9 +242,16 @@
     margin: 50px;
 }
 
+<<<<<<< HEAD
 
 #accept,
 #acceptEdit {
+=======
+#accept,
+#acceptEdit {
+    background-color: green;
+    color: #000;
+>>>>>>> e2697e1d593ba366223cb0569f474bf1b81c15af
     border-radius: 20px;
     font-size: 13px;
     margin-top: 20px;
@@ -224,14 +263,26 @@
 }
 
 #cancel,
+<<<<<<< HEAD
 #cancelEdit {
+=======
+#cancelEdit,
+#deleteEdit {
+    background-color: red;
+    color: #000;
+>>>>>>> e2697e1d593ba366223cb0569f474bf1b81c15af
     border-radius: 20px;
     font-size: 13px;
     margin-top: 20px;
 }
 
 #cancel:hover,
+<<<<<<< HEAD
 #cancelEdit:hover {
+=======
+#cancelEdit:hover,
+#deleteEdit:hover {
+>>>>>>> e2697e1d593ba366223cb0569f474bf1b81c15af
     background-color: rgb(186, 151, 151);
 }
 

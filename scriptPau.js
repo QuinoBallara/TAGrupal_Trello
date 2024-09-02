@@ -90,10 +90,16 @@ document.addEventListener("DOMContentLoaded", function () {
     cancelButton.textContent = "Cancelar"
     cancelButton.className = "button"
 
+    const deleteButton = document.createElement("button")
+    deleteButton.id = "deleteEdit"
+    deleteButton.textContent = "Eliminar"
+    deleteButton.className = "button"
+
     const buttonBox = document.createElement("div")
     buttonBox.className = "buttons"
     buttonBox.appendChild(acceptButton)
     buttonBox.appendChild(cancelButton)
+    buttonBox.appendChild(deleteButton)
 
     modalContent.appendChild(document.createElement("h2")).textContent = "Editar tarea"
     modalContent.appendChild(document.createElement("label")).textContent = "Título:"
@@ -138,6 +144,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('dateEdit').value = ''
         document.getElementById('priorityEdit').value = '1'
         document.getElementById('stateEdit').value = 'backlog'
+        window.taskToEdit = null
+    })
+    deleteButton.addEventListener("click", function () {
+        taskModalEdit.classList.remove("is-active")
+        window.taskToEdit.remove()
         window.taskToEdit = null
     })
 
