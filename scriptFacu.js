@@ -1,3 +1,5 @@
+/// import { taskToEdit } from "./scriptPau.js"
+
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
     const taskModal = document.createElement("div")
@@ -136,6 +138,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cancelButton.addEventListener("click", function () {
         taskModal.classList.remove("is-active")
+        document.getElementById('title').value = ''
+        document.getElementById('description').value = ''
+        document.getElementById('assign').value = ''
+        document.getElementById('date').value = ''
+        document.getElementById('priority').value = '1'
+        document.getElementById('state').value = 'backlog'
+
     })
 
     const columns = document.querySelectorAll('.card');
@@ -162,14 +171,25 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
+        newTask.id = `task-${document.querySelectorAll('.task').length}`;
+        newTask.addEventListener('click', function (event) {
+            document.getElementById('taskModalEdit').classList.add("is-active")
+            document.getElementById('titleEdit').value = event.currentTarget.querySelector('#titleTask').textContent;
+            document.getElementById('descriptionEdit').value = event.currentTarget.querySelector('#desc').textContent;
+            document.getElementById('stateEdit').value = event.currentTarget.querySelector('#status').textContent;
+            document.getElementById('assignEdit').value = event.currentTarget.querySelector('#assignee').textContent;
+            document.getElementById('dateEdit').value = event.currentTarget.querySelector('#finalDate').textContent;
+            document.getElementById('priorityEdit').value = event.currentTarget.querySelector('#priorityTask').textContent;
+            window.taskToEdit = event.currentTarget
+        })
 
         newTask.innerHTML =
-            `<h3>${title}</h3>
-                <p>${desc}</p>
-                <p class="hide">${status}</p>
-                <p class="hide">${tasker}</p>
-                <p class="hide">${finalDate}</p>
-                <p class="hide">${priority}</p>`;
+            `<h3 id="titleTask" >${title}</h3>
+                <p id="desc" >${desc}</p>
+                <p id="status" class="hide">${status}</p>
+                <p id="assignee" class="hide">${tasker}</p>
+                <p id="finalDate" class="hide">${finalDate}</p>
+                <p id="priorityTask" class="hide">${priority}</p>`;
 
         console.log("Mi estado es:", status)
 
@@ -177,7 +197,7 @@ function addTaskToBoard() {
 
         if (column) {
             console.log("Hay columna")
-            column.appendChild(newTask);
+            column.querySelector('.card-content').appendChild(newTask);
         }
 
 
@@ -190,6 +210,12 @@ function addTaskToBoard() {
 
     } else {
         alert('Por favor, complete todos los campos.');
+        document.getElementById('title').value = '';
+        document.getElementById('description').value = '';
+        document.getElementById('assign').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('priority').value = '1';
+        document.getElementById('state').value = 'backlog';
     }
 }
 
@@ -209,6 +235,6 @@ function drop(ev) {
     if (ev.target.classList.contains('card')) {
         ev.target.appendChild(taskElement);
     } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').appendChild(taskElement);
+        ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
     }
 }
