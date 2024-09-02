@@ -1,5 +1,92 @@
+@media (prefers-color-scheme: light) {
+    .modal-content {
+        background-color: #9bcdd9;
+    }
+
+    .modal-content h2 {
+        color: #0a0a0a;
+    }
+
+    .modal-content label {
+        color: #161212;
+    }
+
+    .button-container button {
+        color: #fff
+    }
+
+    #accept,
+    #acceptEdit {
+        background-color: green;
+        color: #000;
+    }
+
+    #accept:hover,
+    #acceptEdit:hover {
+        background-color: #b7d6b8;
+    }
+
+    #cancel,
+    #cancelEdit {
+        background-color: red;
+        color: #000;
+    }
+
+    #cancel:hover,
+    #cancelEdit:hover {
+        background-color: rgb(186, 151, 151);
+    }
+}
+
+@media (prefers-color-scheme:dark) {
+    .modal-content {
+        background-color: #495f60;
+    }
+
+    .modal-content h2 {
+        color: #f1faee;
+    }
+
+    .modal-content label {
+        color: #f1faee;
+    }
+
+    .button-container button {
+        color: #f1faee
+    }
+
+    #accept,
+    #acceptEdit {
+        background-color: green;
+        color: #000;
+    }
+
+    #accept:hover,
+    #acceptEdit:hover {
+        background-color: #b7d6b8;
+    }
+
+    #cancel,
+    #cancelEdit {
+        background-color: red;
+        color: #000;
+    }
+
+    #cancel:hover,
+    #cancelEdit:hover {
+        background-color: rgb(186, 151, 151);
+    }
+}
+
+#modalContentFacu>* {
+    font-family: 'Times New Roman', Times, serif !important;
+}
+
+.hide {
+    display: none;
+}
+
 .modal-content {
-    background-color: #9bcdd9;
     padding: 2rem;
     border: 1px solid #ddd;
     width: 80%;
@@ -26,7 +113,6 @@
 
 .modal-header h2 {
     margin: 0;
-    color: #0a0a0a;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
 }
@@ -41,13 +127,9 @@
 
 }
 
-.modal-close-button:hover {
-    color: #c0392b;
-}
 
 .modal-content label {
     font-weight: 600;
-    color: #161212;
     margin-bottom: 0.5rem;
 }
 
@@ -81,33 +163,20 @@
     resize: vertical;
 }
 
-.button-container #accept,
-#acceptEdit {
-    background-color: #2ecc71;
-}
 
 .button-container #accept:hover,
 #acceptEdit:hover {
-    background-color: #27ae60;
     transform: scale(1.05);
 }
 
-.button-container #cancel,
-#cancelEdit,
-#deleteEdit {
-    background-color: #e74c3c;
-}
 
 .button-container #cancel:hover,
-#cancelEdit:hover,
-#deleteEdit:hover {
-    background-color: #c0392b;
+#cancelEdit:hover {
     transform: scale(1.05);
 }
 
 .modal-content h2 {
     font-weight: bold;
-    color: #333;
     margin-bottom: 10px;
     text-align: center;
 
@@ -115,7 +184,6 @@
 
 .modal-content label {
     font-weight: bold;
-    color: #0c0c0f;
     margin-bottom: 5px;
 }
 
@@ -142,10 +210,9 @@
     margin: 50px;
 }
 
+
 #accept,
 #acceptEdit {
-    background-color: green;
-    color: #000;
     border-radius: 20px;
     font-size: 13px;
     margin-top: 20px;
@@ -157,18 +224,14 @@
 }
 
 #cancel,
-#cancelEdit,
-#deleteEdit {
-    background-color: red;
-    color: #000;
+#cancelEdit {
     border-radius: 20px;
     font-size: 13px;
     margin-top: 20px;
 }
 
 #cancel:hover,
-#cancelEdit:hover,
-#deleteEdit:hover {
+#cancelEdit:hover {
     background-color: rgb(186, 151, 151);
 }
 
