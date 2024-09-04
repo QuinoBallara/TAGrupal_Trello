@@ -1,3 +1,5 @@
+import {getTasks, createTask} from "./routes.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log('El DOM está listo');
     const columns = document.querySelectorAll('.card-content');
@@ -13,7 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
         task.addEventListener('dragstart', drag);
         task.draggable = true;
     });
+
+    getTasks();
+
 });
+
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -37,6 +43,7 @@ function drop(ev) {
     if (!taskElement) {
         console.error(`No se encontró un elemento con el ID: ${data}`);
         return;
+        w
     }
 
 

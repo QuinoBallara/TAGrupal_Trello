@@ -1,4 +1,4 @@
-/// import { taskToEdit } from "./scriptPau.js"
+import {getTasks, createTask} from "./routes.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
@@ -195,9 +195,20 @@ function addTaskToBoard() {
 
         const column = document.getElementById(status);
 
+        const task = {
+            title: title,
+            description: desc,
+            assign: tasker,
+            state: status,
+            priority: priority,
+            endDate: finalDate
+        }
+
         if (column) {
             console.log("Hay columna")
             column.querySelector('.card-content').appendChild(newTask);
+            console.log({task})
+            createTask(task)
         }
 
 
