@@ -1,6 +1,6 @@
 import {getTasks, createTask} from "./routes.js";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
     const taskModal = document.createElement("div")
     taskModal.id = "taskModal"
@@ -153,15 +153,42 @@ document.addEventListener("DOMContentLoaded", function () {
         column.addEventListener('drop', drop);
     });
 
+    const actualTasks = await getTasks();
+    console.log(actualTasks[1])
+    for (let i = 0; i < actualTasks.length; i++) {
+        addTaskToBoard(actualTasks[i])
+    }
 })
 
-function addTaskToBoard() {
-    const title = document.getElementById('title').value;
-    const desc = document.getElementById('description').value;
-    const status = document.getElementById('state').value;
-    const tasker = document.getElementById('assign').value;
-    const finalDate = document.getElementById('date').value;
-    const priority = document.getElementById('priority').value;
+function addTaskToBoard(task) {
+    let title = ''
+    let desc = '';
+    let status = '';
+    let tasker = '';
+    let finalDate = '';
+    let priority = ''
+
+    if (task) {
+        title = task.title;
+        desc = task.description;
+        status = task.state;
+        tasker = task.assignedTo;
+        finalDate = task.endDate;
+        priority = task.priority
+        console.log('Todo ok')
+    } else {
+        title = document.getElementById('title').value;
+        desc = document.getElementById('description').value;
+        status = document.getElementById('state').value;
+        tasker = document.getElementById('assign').value;
+        finalDate = document.getElementById('date').value;
+        priority = document.getElementById('priority').value;
+    }
+    //
+    // console.log({title})
+    // console.log({desc})
+    // console.log({status})
+
 
     if (title && desc && status) {
 
@@ -208,7 +235,7 @@ function addTaskToBoard() {
             console.log("Hay columna")
             column.querySelector('.card-content').appendChild(newTask);
             console.log({task})
-            createTask(task)
+            // createTask(task)
         }
 
 
@@ -220,7 +247,7 @@ function addTaskToBoard() {
         document.getElementById('state').value = 'backlog';
 
     } else {
-        alert('Por favor, complete todos los campos.');
+        // alert('Por favor, complete todos los campos.');
         document.getElementById('title').value = '';
         document.getElementById('description').value = '';
         document.getElementById('assign').value = '';

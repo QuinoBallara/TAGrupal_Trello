@@ -19,3 +19,19 @@ export async function createTask(task) {
     });
 }
 
+export async function updateTask(task) {
+    await fetch(`${backend}tasks/${task.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(task),
+    });
+}
+
+export async function deleteTask(taskId) {
+    await fetch(`${backend}tasks/${taskId}`, {
+        method: 'DELETE',
+    });
+}
+
