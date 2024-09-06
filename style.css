@@ -69,6 +69,9 @@ html {
 
 }
 
+.hide {
+    display: none;
+}
 
 .scroller {
     --sb-track-color: #a8dadc;

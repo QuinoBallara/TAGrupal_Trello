@@ -1,3 +1,5 @@
+import { route, drop, drag, allowDrop } from "./scriptBootPage.js"
+
 document.addEventListener("DOMContentLoaded", function () {
     const taskModalEdit = document.createElement("div")
     taskModalEdit.id = "taskModalEdit"
@@ -35,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const priorityOption2 = document.createElement("option")
     priorityOption2.textContent = "2"
     priorityOption2.value = "2"
-    const priorityOption3 = document.createElement("option")
+    const priorityOption3 = document.createElement("o2ption")
     priorityOption3.textContent = "3"
     priorityOption3.value = "3"
     const priorityOption4 = document.createElement("option")
@@ -146,9 +148,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('stateEdit').value = 'backlog'
         window.taskToEdit = null
     })
-    deleteButton.addEventListener("click", function () {
+    deleteButton.addEventListener("click", async function () {
         taskModalEdit.classList.remove("is-active")
         window.taskToEdit.remove()
+        await fetch(route + "/tasks/" + window.taskToEdit.id, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
         window.taskToEdit = null
     })
 
@@ -160,8 +168,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
+async function updateTask(task) {
+    await fetch(route + "/tasks/" + task.id, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "title": task.querySelector('#titleTask').textContent,
+            "description": task.querySelector('#desc').textContent,
+            "assignedTo": task.querySelector('#assignee').textContent,
+            "endDate": task.querySelector('#finalDate').textContent,
+            "priority": task.querySelector('#priorityTask').textContent,
+            "status": task.querySelector('#status').textContent
+        })
+
+    })
+} 3
+
 window.taskToEdit = null
-function addEditedTaskToBoard() {
+async function addEditedTaskToBoard() {
     const title = document.getElementById('titleEdit').value;
     const desc = document.getElementById('descriptionEdit').value;
     const status = document.getElementById('stateEdit').value;
@@ -180,7 +206,7 @@ function addEditedTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
-        newTask.id = `task-${document.querySelectorAll('.task').length}`;
+        newTask.id = `${window.taskToEdit.id}`;
 
         newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
@@ -202,6 +228,10 @@ function addEditedTaskToBoard() {
                 <p id="priorityTask" class="hide">${priority}</p>`;
 
         console.log("Mi estado es:", status)
+
+
+        const backTask = updateTask(newTask);
+
 
         const column = document.getElementById(status);
 
@@ -230,22 +260,22 @@ function addEditedTaskToBoard() {
     }
 }
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
+// function allowDrop(ev) {
+//     ev.preventDefault();
+// }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
+// function drag(ev) {
+//     ev.dataTransfer.setData("text", ev.target.id);
+// }
 
-function drop(ev) {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    const taskElement = document.getElementById(data);
+// function drop(ev) {
+//     ev.preventDefault();
+//     const data = ev.dataTransfer.getData("text");
+//     const taskElement = document.getElementById(data);
 
-    if (ev.target.classList.contains('card')) {
-        ev.target.appendChild(taskElement);
-    } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
-    }
-}
+//     if (ev.target.classList.contains('card')) {
+//         ev.target.appendChild(taskElement);
+//     } else if (ev.target.closest('.card')) {
+//         ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
+//     }
+// }

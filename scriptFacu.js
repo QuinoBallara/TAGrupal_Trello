@@ -1,4 +1,4 @@
-/// import { taskToEdit } from "./scriptPau.js"
+import { route, drop, drag, allowDrop } from "./scriptBootPage.js"
 
 document.addEventListener("DOMContentLoaded", function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
@@ -171,7 +171,6 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
-        newTask.id = `task-${document.querySelectorAll('.task').length}`;
         newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
             document.getElementById('titleEdit').value = event.currentTarget.querySelector('#titleTask').textContent;
@@ -201,6 +200,10 @@ function addTaskToBoard() {
         }
 
 
+        const backTask = createTask(newTask);
+        newTask.id = backTask.id;
+
+
         document.getElementById('title').value = '';
         document.getElementById('description').value = '';
         document.getElementById('assign').value = '';
@@ -218,23 +221,40 @@ function addTaskToBoard() {
         document.getElementById('state').value = 'backlog';
     }
 }
-
-function allowDrop(ev) {
-    ev.preventDefault();
+export async function createTask(task) {
+    const data = await fetch(route + "/tasks", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: task.querySelector('#titleTask').textContent,
+            description: task.querySelector('#desc').textContent,
+            status: task.querySelector('#status').textContent,
+            assignedTo: task.querySelector('#assignee').textContent,
+            endDate: task.querySelector('#finalDate').textContent,
+            priority: task.querySelector('#priorityTask').textContent
+        })
+    })
+    return await data.json();
 }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
+// function allowDrop(ev) {
+//     ev.preventDefault();
+// }
 
-function drop(ev) {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    const taskElement = document.getElementById(data);
+// function drag(ev) {
+//     ev.dataTransfer.setData("text", ev.target.id);
+// }
 
-    if (ev.target.classList.contains('card')) {
-        ev.target.appendChild(taskElement);
-    } else if (ev.target.closest('.card')) {
-        ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
-    }
-}
+// function drop(ev) {
+//     ev.preventDefault();
+//     const data = ev.dataTransfer.getData("text");
+//     const taskElement = document.getElementById(data);
+
+//     if (ev.target.classList.contains('card')) {
+//         ev.target.appendChild(taskElement);
+//     } else if (ev.target.closest('.card')) {
+//         ev.target.closest('.card').querySelector('.card-content').appendChild(taskElement);
+//     }
+// }
