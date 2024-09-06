@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const priorityOption2 = document.createElement("option")
     priorityOption2.textContent = "2"
     priorityOption2.value = "2"
-    const priorityOption3 = document.createElement("o2ption")
+    const priorityOption3 = document.createElement("option")
     priorityOption3.textContent = "3"
     priorityOption3.value = "3"
     const priorityOption4 = document.createElement("option")
