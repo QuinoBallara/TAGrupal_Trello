@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     acceptButton.textContent = "Aceptar"
     acceptButton.className = "button"
 
+
     const cancelButton = document.createElement("button")
     cancelButton.id = "cancel"
     cancelButton.textContent = "Cancelar"
@@ -133,7 +134,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     acceptButton.addEventListener("click", function () {
         taskModal.classList.remove("is-active")
-        addTaskToBoard()
+        const newTask = {
+            title: document.getElementById('title').value,
+            description: document.getElementById('description').value,
+            assignedTo: document.getElementById('assign').value,
+            state: document.getElementById('state').value,
+            priority: document.getElementById('priority').value,
+            endDate: document.getElementById('date').value
+        }
+        addTaskToBoard(newTask)
+        createTask(newTask)
     })
 
     cancelButton.addEventListener("click", function () {
@@ -235,7 +245,7 @@ function addTaskToBoard(task) {
             console.log("Hay columna")
             column.querySelector('.card-content').appendChild(newTask);
             console.log({task})
-            // createTask(task)
+
         }
 
 
