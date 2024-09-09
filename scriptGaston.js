@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         task.addEventListener('dragstart', drag);
         task.draggable = true;
     });
-
     getTasks();
-
 });
 
 

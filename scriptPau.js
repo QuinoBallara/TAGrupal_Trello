@@ -1,3 +1,6 @@
+import {deleteTask} from "./routes.js";
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const taskModalEdit = document.createElement("div")
     taskModalEdit.id = "taskModalEdit"
@@ -94,6 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
     deleteButton.id = "deleteEdit"
     deleteButton.textContent = "Eliminar"
     deleteButton.className = "button"
+    deleteButton.addEventListener("click", function () {
+        deleteTask(window.taskToEdit.id.split('-')[1]);
+    })
 
     const buttonBox = document.createElement("div")
     buttonBox.className = "buttons"
@@ -161,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 window.taskToEdit = null
+
 function addEditedTaskToBoard() {
     const title = document.getElementById('titleEdit').value;
     const desc = document.getElementById('descriptionEdit').value;
