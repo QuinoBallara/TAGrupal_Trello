@@ -1,6 +1,6 @@
-/// import { taskToEdit } from "./scriptPau.js"
+import { createTask, getTasks, updateTask } from "./scriptBack.js"
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const taskButton = document.getElementById("addTask") // Asigna el ID del botón "Título Descripción"
     const taskModal = document.createElement("div")
     taskModal.id = "taskModal"
@@ -153,9 +153,42 @@ document.addEventListener("DOMContentLoaded", function () {
         column.addEventListener('drop', drop);
     });
 
+    const tasks = await getTasks();
+    console.log(tasks)
+    tasks.forEach(task =>{
+        const newTask = document.createElement('div');
+        newTask.classList.add('task');
+        newTask.draggable = true;
+        newTask.addEventListener('dragstart', drag);
+        newTask.id = `${task.id}`;
+        newTask.addEventListener('click', function (event) {
+            document.getElementById('taskModalEdit').classList.add("is-active")
+            document.getElementById('titleEdit').value = event.currentTarget.querySelector('#titleTask').textContent;
+            document.getElementById('descriptionEdit').value = event.currentTarget.querySelector('#desc').textContent;
+            document.getElementById('stateEdit').value = event.currentTarget.querySelector('#status').textContent;
+            document.getElementById('assignEdit').value = event.currentTarget.querySelector('#assignee').textContent;
+            document.getElementById('dateEdit').value = event.currentTarget.querySelector('#finalDate').textContent;
+            document.getElementById('priorityEdit').value = event.currentTarget.querySelector('#priorityTask').textContent;
+            updateTask(event.currentTarget)
+            window.taskToEdit = event.currentTarget
+        })
+
+        newTask.innerHTML =
+            `<h3 id="titleTask" >${task.title}</h3>
+                <p id="desc" >${task.description}</p>
+                <p id="status" class="hide">${task.status}</p>
+                <p id="assignee" class="hide">${task.assignedTo}</p>
+                <p id="finalDate" class="hide">${task.endDate}</p>
+                <p id="priorityTask" class="hide">${task.priority}</p>`;
+
+        const status = task.status
+        document.getElementById(status).querySelector('.card-content').appendChild(newTask)
+
+    } );
 })
 
-function addTaskToBoard() {
+
+async function addTaskToBoard() {
     const title = document.getElementById('title').value;
     const desc = document.getElementById('description').value;
     const status = document.getElementById('state').value;
@@ -171,7 +204,7 @@ function addTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
-        newTask.id = `task-${document.querySelectorAll('.task').length}`;
+        //newTask.id = `task-${document.querySelectorAll('.task').length}`;
         newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
             document.getElementById('titleEdit').value = event.currentTarget.querySelector('#titleTask').textContent;
@@ -200,6 +233,8 @@ function addTaskToBoard() {
             column.querySelector('.card-content').appendChild(newTask);
         }
 
+        const data = await createTask(newTask)
+        newTask.id = data.id
 
         document.getElementById('title').value = '';
         document.getElementById('description').value = '';

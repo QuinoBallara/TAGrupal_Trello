@@ -1,3 +1,5 @@
+import { deleteTask, updateTask } from "./scriptBack.js"
+
 document.addEventListener("DOMContentLoaded", function () {
     const taskModalEdit = document.createElement("div")
     taskModalEdit.id = "taskModalEdit"
@@ -148,6 +150,8 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     deleteButton.addEventListener("click", function () {
         taskModalEdit.classList.remove("is-active")
+        deleteTask(window.taskToEdit)
+        
         window.taskToEdit.remove()
         window.taskToEdit = null
     })
@@ -180,7 +184,7 @@ function addEditedTaskToBoard() {
         newTask.classList.add('task');
         newTask.draggable = true;
         newTask.addEventListener('dragstart', drag);
-        newTask.id = `task-${document.querySelectorAll('.task').length}`;
+        newTask.id = `${window.taskToEdit.id}`;
 
         newTask.addEventListener('click', function (event) {
             document.getElementById('taskModalEdit').classList.add("is-active")
@@ -190,6 +194,7 @@ function addEditedTaskToBoard() {
             document.getElementById('assignEdit').value = event.currentTarget.querySelector('#assignee').textContent;
             document.getElementById('dateEdit').value = event.currentTarget.querySelector('#finalDate').textContent;
             document.getElementById('priorityEdit').value = event.currentTarget.querySelector('#priorityTask').textContent;
+            
             window.taskToEdit = event.currentTarget
         })
 
@@ -210,6 +215,7 @@ function addEditedTaskToBoard() {
             column.querySelector('.card-content').appendChild(newTask);
         }
 
+        updateTask(newTask)
 
         document.getElementById('titleEdit').value = '';
         document.getElementById('descriptionEdit').value = '';
