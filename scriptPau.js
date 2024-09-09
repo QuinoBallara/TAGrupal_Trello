@@ -1,4 +1,4 @@
-import {deleteTask} from "./routes.js";
+import {updateTask, deleteTask} from "./routes.js";
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -139,7 +139,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     acceptButton.addEventListener("click", function () {
         taskModalEdit.classList.remove("is-active")
+        console.log(window.taskToEdit.id.split('-')[1])
+        const editedTask = {
+            id: Number(window.taskToEdit.id.split('-')[1]) + 1,
+            title: document.getElementById('titleEdit').value,
+            description: document.getElementById('descriptionEdit').value,
+            assignedTo: document.getElementById('assignEdit').value,
+            state: document.getElementById('stateEdit').value,
+            priority: document.getElementById('priorityEdit').value,
+            endDate: document.getElementById('dateEdit').value
+        }
         addEditedTaskToBoard()
+        updateTask(editedTask)
     })
 
     cancelButton.addEventListener("click", function () {

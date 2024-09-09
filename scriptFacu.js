@@ -135,6 +135,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     acceptButton.addEventListener("click", function () {
         taskModal.classList.remove("is-active")
         const newTask = {
+            id: document.querySelectorAll('.task').length + 1,
             title: document.getElementById('title').value,
             description: document.getElementById('description').value,
             assignedTo: document.getElementById('assign').value,

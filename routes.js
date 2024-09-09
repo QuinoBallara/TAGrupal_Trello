@@ -10,6 +10,7 @@ export async function getTasks() {
 }
 
 export async function createTask(task) {
+    console.log("New task:", task)
     await fetch(`${backend}tasks`, {
         method: 'POST',
         headers: {
@@ -20,6 +21,7 @@ export async function createTask(task) {
 }
 
 export async function updateTask(task) {
+    console.log('Taskkkkkkkkkkkkkkkkkkkkkk:', task)
     await fetch(`${backend}tasks/${task.id}`, {
         method: 'PUT',
         headers: {
